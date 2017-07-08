@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +22,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-Bd-x3B">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CXz-wN-eVs">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -38,18 +37,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="63H-Ok-5OF">
+                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="63H-Ok-5OF">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pD7-e0-tNy">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         </imageView>
                                                     </subviews>
+                                                    <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="pD7-e0-tNy" secondAttribute="bottom" id="9fD-Qb-Vt9"/>
-                                                        <constraint firstAttribute="trailing" secondItem="pD7-e0-tNy" secondAttribute="trailing" id="B0H-j7-9Rn"/>
-                                                        <constraint firstItem="pD7-e0-tNy" firstAttribute="leading" secondItem="63H-Ok-5OF" secondAttribute="leading" id="HyI-gO-vp4"/>
-                                                        <constraint firstItem="pD7-e0-tNy" firstAttribute="top" secondItem="63H-Ok-5OF" secondAttribute="top" id="xrh-J0-1Uj"/>
+                                                        <constraint firstItem="pD7-e0-tNy" firstAttribute="centerX" secondItem="63H-Ok-5OF" secondAttribute="centerX" id="5tM-Nh-4Kv"/>
+                                                        <constraint firstItem="pD7-e0-tNy" firstAttribute="centerY" secondItem="63H-Ok-5OF" secondAttribute="centerY" id="Bzf-b1-vbi"/>
+                                                        <constraint firstAttribute="bottom" secondItem="pD7-e0-tNy" secondAttribute="bottom" id="DuK-WF-ZdZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="pD7-e0-tNy" secondAttribute="trailing" id="HMc-5y-7Oh"/>
+                                                        <constraint firstItem="pD7-e0-tNy" firstAttribute="top" secondItem="63H-Ok-5OF" secondAttribute="top" id="jnA-Ow-GG9"/>
+                                                        <constraint firstItem="pD7-e0-tNy" firstAttribute="leading" secondItem="63H-Ok-5OF" secondAttribute="leading" id="rPY-S0-RvU"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="delegate" destination="14D-rr-Kde" id="RkP-N7-TzI"/>
@@ -59,10 +61,8 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="63H-Ok-5OF" firstAttribute="leading" secondItem="X8i-8C-qBZ" secondAttribute="leading" id="8G9-pZ-gfR"/>
-                                            <constraint firstItem="pD7-e0-tNy" firstAttribute="height" secondItem="X8i-8C-qBZ" secondAttribute="height" id="HX7-oS-aVw"/>
                                             <constraint firstAttribute="bottom" secondItem="63H-Ok-5OF" secondAttribute="bottom" id="QsZ-Lg-tQs"/>
                                             <constraint firstAttribute="trailing" secondItem="63H-Ok-5OF" secondAttribute="trailing" id="aem-WE-Lum"/>
-                                            <constraint firstItem="pD7-e0-tNy" firstAttribute="width" secondItem="X8i-8C-qBZ" secondAttribute="width" id="fg8-z2-0YN"/>
                                             <constraint firstItem="63H-Ok-5OF" firstAttribute="top" secondItem="X8i-8C-qBZ" secondAttribute="top" id="zW1-9c-gbI"/>
                                         </constraints>
                                     </collectionViewCell>
