@@ -21,7 +21,6 @@ class PhotoBrowserViewController: UIViewController {
     @IBOutlet weak var browserFlowLayout: UICollectionViewFlowLayout!
     
     fileprivate var lastItem: Int = 0
-    fileprivate var nonUpdateItem: [Int] = []
     fileprivate var isURL: Bool {
         return !urls.isEmpty
     }
@@ -32,16 +31,13 @@ class PhotoBrowserViewController: UIViewController {
         browserFlowLayout.itemSize = CGSize(width: 50, height: 50)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        imageFlowLayout.itemSize = UIScreen.main.bounds.size
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        imageFlowLayout.itemSize = size
         browserFlowLayout.itemSize = CGSize(width: 50, height: 50)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        imageCollectionView.scrollToItem(at: IndexPath(item: lastItem, section: 0),
-                                         at: .left, animated: false)
+        
+        imageCollectionView.contentOffset = CGPoint(x: CGFloat(lastItem) * size.width, y: 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,14 +71,10 @@ class PhotoBrowserViewController: UIViewController {
         browserCollectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: true)
         if let lastCell = browserCollectionView.cellForItem(at: IndexPath(item: lastItem, section: 0)) {
             animateZoomforCellRemove(cell: lastCell)
-        } else {
-            nonUpdateItem.append(lastItem)
         }
         
         if let cell = browserCollectionView.cellForItem(at: IndexPath(item: item, section: 0)) {
             animateZoomforCell(cell: cell)
-        } else {
-            nonUpdateItem.append(item)
         }
         
         imageCollectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .left, animated: true)
@@ -126,11 +118,6 @@ extension PhotoBrowserViewController: UICollectionViewDelegate {
 
             if collectionView == imageCollectionView {
                 selectItem(item: item)
-            } else if collectionView == browserCollectionView {
-                if !nonUpdateItem.isEmpty {
-                    browserCollectionView.reloadData()
-                    nonUpdateItem.removeAll()
-                }
             }
         }
     }
@@ -197,6 +184,23 @@ extension PhotoBrowserViewController: UICollectionViewDataSource {
             break
         }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case browserCollectionView:
+            if indexPath.item == lastItem {
+                cell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                cell.layer.borderColor = UIColor.white.cgColor
+                cell.layer.borderWidth = 2
+            } else {
+                cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                cell.layer.borderColor = UIColor.white.cgColor
+                cell.layer.borderWidth = 0
+            }
+        default:
+            break
+        }
     }
 }
 
