@@ -14,6 +14,8 @@ class PhotoBrowserViewController: UIViewController {
     var images: [UIImage] = []
     var urls: [URL] = []
     
+    @IBOutlet weak var myNavigationBar: UINavigationBar!
+    
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var browserCollectionView: UICollectionView!
     
@@ -25,10 +27,19 @@ class PhotoBrowserViewController: UIViewController {
         return !urls.isEmpty
     }
     
+    @IBAction func backAction(_ sender: Any) {
+        if self.navigationController != nil {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageFlowLayout.itemSize = UIScreen.main.bounds.size
         browserFlowLayout.itemSize = CGSize(width: 50, height: 50)
+        myNavigationBar.topItem?.title = "1 / \(urls.count)"
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -38,6 +49,10 @@ class PhotoBrowserViewController: UIViewController {
         browserFlowLayout.itemSize = CGSize(width: 50, height: 50)
         
         imageCollectionView.contentOffset = CGPoint(x: CGFloat(lastItem) * size.width, y: 0)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +94,8 @@ class PhotoBrowserViewController: UIViewController {
         
         imageCollectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .left, animated: true)
         lastItem = item
+        
+        myNavigationBar.topItem?.title = "\(item+1) / \(urls.count)"
     }
     
     func tapImageAction(_ sender: UITapGestureRecognizer) {

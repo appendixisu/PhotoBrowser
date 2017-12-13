@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,11 +17,11 @@
                         <viewControllerLayoutGuide type="bottom" id="mQa-NQ-7gc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="L1L-u8-nuZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZqH-Bd-x3B">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CXz-wN-eVs">
                                     <size key="itemSize" width="50" height="50"/>
@@ -73,7 +73,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ciE-m4-6yn">
-                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="656" width="414" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="lCO-BD-2LR"/>
@@ -111,28 +111,56 @@
                                     <outlet property="delegate" destination="14D-rr-Kde" id="52x-1Q-zWG"/>
                                 </connections>
                             </collectionView>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZ3-C1-Oy9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="dok-j6-LiL"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="76L-zC-NDB">
+                                        <barButtonItem key="leftBarButtonItem" title="←" id="6W9-Bi-7Qc">
+                                            <connections>
+                                                <action selector="backAction:" destination="14D-rr-Kde" id="OXE-oW-i7w"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ZqH-Bd-x3B" secondAttribute="trailing" id="4Pa-cf-wgx"/>
+                            <constraint firstItem="oZ3-C1-Oy9" firstAttribute="top" secondItem="L1L-u8-nuZ" secondAttribute="top" id="DIg-dm-ekt"/>
                             <constraint firstItem="ZqH-Bd-x3B" firstAttribute="leading" secondItem="L1L-u8-nuZ" secondAttribute="leading" id="IfK-3r-c97"/>
+                            <constraint firstItem="oZ3-C1-Oy9" firstAttribute="leading" secondItem="L1L-u8-nuZ" secondAttribute="leading" id="K91-kP-JKX"/>
                             <constraint firstAttribute="trailing" secondItem="ciE-m4-6yn" secondAttribute="trailing" id="NXD-YZ-TZS"/>
-                            <constraint firstItem="ZqH-Bd-x3B" firstAttribute="top" secondItem="L1L-u8-nuZ" secondAttribute="top" id="Nhr-X0-YEz"/>
+                            <constraint firstItem="ZqH-Bd-x3B" firstAttribute="top" secondItem="oZ3-C1-Oy9" secondAttribute="bottom" id="VPa-Tr-NiK"/>
                             <constraint firstItem="ciE-m4-6yn" firstAttribute="leading" secondItem="L1L-u8-nuZ" secondAttribute="leading" id="Ynj-gO-2gc"/>
+                            <constraint firstItem="oZ3-C1-Oy9" firstAttribute="leading" secondItem="L1L-u8-nuZ" secondAttribute="leading" id="Ypy-1C-Hz0"/>
                             <constraint firstItem="mQa-NQ-7gc" firstAttribute="top" secondItem="ciE-m4-6yn" secondAttribute="bottom" id="seJ-Dn-NLx"/>
+                            <constraint firstAttribute="trailing" secondItem="oZ3-C1-Oy9" secondAttribute="trailing" id="t8x-5z-jxZ"/>
+                            <constraint firstAttribute="trailing" secondItem="oZ3-C1-Oy9" secondAttribute="trailing" id="xkb-W3-Suy"/>
                             <constraint firstItem="mQa-NQ-7gc" firstAttribute="top" secondItem="ZqH-Bd-x3B" secondAttribute="bottom" id="yf0-Al-nbB"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="browserCollectionView" destination="ciE-m4-6yn" id="8Kz-8D-Nm8"/>
                         <outlet property="browserFlowLayout" destination="Izu-9r-cT9" id="7i8-qu-wSq"/>
                         <outlet property="imageCollectionView" destination="ZqH-Bd-x3B" id="M6O-xt-Qcs"/>
                         <outlet property="imageFlowLayout" destination="CXz-wN-eVs" id="Obj-L1-88u"/>
+                        <outlet property="myNavigationBar" destination="oZ3-C1-Oy9" id="Le6-cK-pdi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JW-Nc-eGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="104.7976011994003"/>
+            <point key="canvasLocation" x="-30.434782608695656" y="103.53260869565219"/>
         </scene>
     </scenes>
 </document>
